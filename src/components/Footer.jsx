@@ -115,7 +115,7 @@ export default function Footer({ onCategoryClick }) {
               rel="noopener noreferrer"
               className="text-emerald-300 font-bold hover:text-emerald-100 transition-colors flex items-center gap-1.5 bg-emerald-950/60 px-3 py-1 rounded-full border border-emerald-500/40 shadow-sm"
             >
-              <span>💬 WhatsApp: +91 8309179296</span>
+              <span>💬 Chat on WhatsApp</span>
             </a>
             <button
               onClick={scrollToTop}

@@ -93,7 +93,7 @@ export default function ContactSection() {
                           rel="noopener noreferrer"
                           className="text-white text-base sm:text-lg hover:text-emerald-300 font-bold transition-colors block tracking-wide"
                         >
-                          +91 8309179296
+                          Direct WhatsApp Support
                         </a>
                       </div>
                     </div>

@@ -206,16 +206,15 @@ export default function App() {
         href="https://wa.me/918309179296"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 group flex items-center gap-2.5 px-4 py-3 rounded-full bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-600 text-white font-bold text-xs sm:text-sm shadow-2xl shadow-emerald-900/60 border border-emerald-300/40 hover:scale-110 transition-all duration-300 animate-bounce"
+        className="fixed bottom-6 right-6 z-50 group flex items-center gap-2 px-4 py-3 rounded-full bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-600 text-white font-bold text-xs sm:text-sm shadow-2xl shadow-emerald-900/60 border border-emerald-300/40 hover:scale-110 transition-all duration-300 animate-bounce"
         style={{ animationDuration: '3s' }}
-        title="Direct WhatsApp Chat: +91 8309179296"
+        title="Direct WhatsApp Chat"
       >
         <span className="relative flex h-3 w-3">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-200 opacity-75"></span>
           <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-100"></span>
         </span>
         <span className="font-sans tracking-wide">WhatsApp Us</span>
-        <span className="text-[11px] bg-black/30 px-2 py-0.5 rounded-full font-mono text-emerald-200">8309179296</span>
       </a>
 
     </div>
