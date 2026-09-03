@@ -14,19 +14,19 @@ export default function FoodGallery() {
     : FOOD_GALLERY.filter((item) => item.category === galleryFilter);
 
   return (
-    <section id="gallery" className="py-20 bg-[#1A0D07] relative z-10">
+    <section id="gallery" className="py-20 sm:py-28 bg-[#FAF7F2] relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold uppercase tracking-widest mb-3">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#9E3B24]/10 border border-[#9E3B24]/20 text-[#9E3B24] text-xs font-semibold uppercase tracking-widest mb-4">
             <Camera className="w-3.5 h-3.5" />
             <span>Authentic Food Photography</span>
           </div>
-          <h2 className="font-festive text-3xl sm:text-5xl font-bold text-white mb-4">
+          <h2 className="font-festive text-3xl sm:text-5xl font-bold text-stone-900 tracking-tight mb-4">
             Andhra Food Gallery
           </h2>
-          <p className="text-amber-100/70 text-sm sm:text-base leading-relaxed">
+          <p className="text-stone-600 text-base sm:text-lg leading-relaxed">
             Feast your eyes on high-definition authentic photographs of traditional dishes from every corner of Andhra Pradesh.
           </p>
         </div>
@@ -39,8 +39,8 @@ export default function FoodGallery() {
               onClick={() => setGalleryFilter(tab)}
               className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
                 galleryFilter === tab
-                  ? 'bg-gradient-to-r from-[#7A1C1C] to-[#D4AF37] text-amber-100 shadow-festive border border-amber-400/40'
-                  : 'bg-[#2B160C] text-amber-200/60 hover:text-amber-200 hover:bg-amber-500/10 border border-amber-500/20'
+                  ? 'bg-[#9E3B24] text-white shadow-sm font-bold'
+                  : 'bg-white text-stone-700 hover:text-stone-900 hover:bg-stone-100 border border-stone-200/80'
               }`}
             >
               {tab}

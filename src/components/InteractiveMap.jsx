@@ -9,23 +9,20 @@ export default function InteractiveMap({ onSelectCity }) {
   const selectedCity = CITIES_DATA.find((c) => c.id === selectedCityId) || CITIES_DATA[0];
 
   return (
-    <section id="map" className="py-20 bg-[#1A0D07] relative z-10 overflow-hidden">
+    <section id="map" className="py-20 sm:py-28 bg-[#FAF7F2] relative z-10 overflow-hidden">
       
-      {/* Decorative Traditional Garland Lines */}
-      <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#7A1C1C] via-[#E66B19] to-[#245428]"></div>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold uppercase tracking-widest mb-3">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1B4D3E]/10 border border-[#1B4D3E]/20 text-[#1B4D3E] text-xs font-semibold uppercase tracking-widest mb-4">
             <Compass className="w-3.5 h-3.5" />
             <span>Interactive Culinary Map</span>
           </div>
-          <h2 className="font-festive text-3xl sm:text-5xl font-bold text-white mb-4">
+          <h2 className="font-festive text-3xl sm:text-5xl font-bold text-stone-900 tracking-tight mb-4">
             Andhra Pradesh Food Map
           </h2>
-          <p className="text-amber-100/70 text-sm sm:text-base leading-relaxed">
+          <p className="text-stone-600 text-base sm:text-lg leading-relaxed">
             Click on any city pin across Andhra Pradesh to unlock its legendary traditional dish, rich historical origin, and secret ingredients!
           </p>
         </div>
@@ -34,32 +31,31 @@ export default function InteractiveMap({ onSelectCity }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
           {/* Left Column: Interactive Vector SVG Map Container */}
-          <div className="lg:col-span-7 bg-[#2B160C]/90 rounded-3xl p-6 sm:p-8 border border-amber-500/30 shadow-2xl relative flex flex-col justify-between overflow-hidden">
+          <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-stone-200/90 shadow-xl relative flex flex-col justify-between overflow-hidden">
             
             {/* Map Header Controls */}
-            <div className="flex items-center justify-between mb-6 pb-4 border-b border-amber-500/20">
+            <div className="flex items-center justify-between mb-6 pb-4 border-b border-stone-100">
               <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-amber-400 animate-ping"></span>
-                <span className="text-xs font-semibold text-amber-200 uppercase tracking-wider">
+                <span className="w-3 h-3 rounded-full bg-[#9E3B24] animate-ping"></span>
+                <span className="text-xs font-bold text-stone-800 uppercase tracking-wider">
                   Interactive Map Canvas
                 </span>
               </div>
-              <span className="text-xs text-amber-300/60 font-medium">
+              <span className="text-xs text-stone-500 font-medium">
                 Showing 7 Primary Andhra Pradesh Culinary Hubs
               </span>
             </div>
 
             {/* Simulated Geographic AP Map Layout with SVG Paths & Pins */}
-            <div className="relative min-h-[420px] sm:min-h-[480px] w-full bg-[#1C0D07]/90 rounded-2xl border border-amber-500/20 p-4 flex items-center justify-center overflow-hidden">
+            <div className="relative min-h-[420px] sm:min-h-[480px] w-full bg-[#F5F0E8] rounded-2xl border border-stone-200/80 p-4 flex items-center justify-center overflow-hidden">
               
               {/* Decorative State Outline Background Graphics */}
-              <svg className="absolute inset-0 w-full h-full opacity-20 pointer-events-none" viewBox="0 0 800 600" fill="none">
-                {/* Andhra Pradesh Coastline & Region Outline */}
-                <path d="M 150,200 Q 550,150 750,300 Q 700,550 400,520 Q 200,500 150,200 Z" fill="#7A1C1C" stroke="#E5A93C" strokeWidth="2" strokeDasharray="4 4" />
+              <svg className="absolute inset-0 w-full h-full opacity-15 pointer-events-none" viewBox="0 0 800 600" fill="none">
+                <path d="M 150,200 Q 550,150 750,300 Q 700,550 400,520 Q 200,500 150,200 Z" fill="#1B4D3E" stroke="#9E3B24" strokeWidth="2" strokeDasharray="4 4" />
               </svg>
 
               {/* State Label */}
-              <div className="absolute top-12 center text-amber-400/30 text-3xl font-bold font-festive tracking-widest pointer-events-none uppercase">
+              <div className="absolute top-12 text-stone-300/80 text-3xl font-bold font-festive tracking-widest pointer-events-none uppercase">
                 Andhra Pradesh
               </div>
 

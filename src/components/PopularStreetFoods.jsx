@@ -5,29 +5,26 @@ import { POPULAR_STREET_FOODS } from '../data/foodData';
 
 export default function PopularStreetFoods({ onOpenChaiMenu, onOpenJuiceMenu, onOpenDrySnacksMenu, onOpenChickenPakodaMenu, onOpenIceCreamMenu, onOpenPaniPuriMenu, onOpenBajjiMixtureMenu, onOpenShawarmaMenu }) {
   return (
-    <section id="street-foods" className="py-20 bg-[#170B06] relative overflow-hidden">
+    <section id="street-foods" className="py-20 sm:py-28 bg-[#FAF7F2] relative overflow-hidden">
       
-      {/* Subtle Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-600/5 rounded-full blur-3xl pointer-events-none"></div>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold uppercase tracking-widest mb-3">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1B4D3E]/10 border border-[#1B4D3E]/20 text-[#1B4D3E] text-xs font-semibold uppercase tracking-widest mb-4">
             <Utensils className="w-3.5 h-3.5" />
-            <span>Telugu Night Market Culture</span>
+            <span>Heritage Culinary Selection</span>
           </div>
-          <h2 className="font-festive text-3xl sm:text-5xl font-bold text-white mb-4">
-            Popular Street Foods
+          <h2 className="font-festive text-3xl sm:text-5xl font-bold text-stone-900 tracking-tight mb-4">
+            Popular Telugu Dishes
           </h2>
-          <p className="text-amber-100/70 text-sm sm:text-base leading-relaxed">
-            From sizzling highway food stalls to bustling evening street corners, experience the beloved street flavors that fuel daily life in Andhra Pradesh.
+          <p className="text-stone-600 text-base sm:text-lg leading-relaxed">
+            From iconic street delicacies to traditional snacks, discover the mouthwatering flavours that define everyday Telugu culinary culture.
           </p>
         </div>
 
-        {/* Street Foods Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Popular Dishes Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
           {POPULAR_STREET_FOODS.map((item, index) => {
             const isChaiItem = item.id === 'irani-chai-osmania';
             const isJuiceItem = item.id === 'fruit-juices';
@@ -53,38 +50,38 @@ export default function PopularStreetFoods({ onOpenChaiMenu, onOpenJuiceMenu, on
             return (
               <motion.div
                 key={item.id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.08 }}
                 onClick={isInteractive ? handleCardClick : undefined}
-                className={`telugu-card rounded-3xl overflow-hidden flex flex-col group relative ${
-                  isInteractive ? 'cursor-pointer hover:border-amber-400 ring-2 ring-amber-500/30' : ''
+                className={`bg-white rounded-3xl border border-stone-200/90 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-400 flex flex-col justify-between group ${
+                  isInteractive ? 'cursor-pointer' : ''
                 }`}
               >
-                {/* Image Container */}
-                <div className="relative h-60 overflow-hidden">
+                {/* Image Container with Subtle Zoom */}
+                <div className="relative h-64 overflow-hidden bg-stone-100">
                   <img
                     src={item.image}
                     alt={item.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 filter brightness-90"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#2B160C] via-[#2B160C]/20 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-transparent to-transparent"></div>
                   
-                  {/* Category Pill */}
+                  {/* Category Pill & Interactive Badge */}
                   <div className="absolute top-4 right-4 flex items-center gap-2">
                     {isInteractive && (
-                      <span className="px-3 py-1 rounded-full bg-[#C08A34] text-[#2A1810] text-xs font-bold shadow-lg animate-bounce">
-                        📖 Menu Card Inside
+                      <span className="px-3 py-1 rounded-full bg-[#9E3B24] text-white text-xs font-bold shadow-md">
+                        📖 Menu Card
                       </span>
                     )}
-                    <span className="px-3 py-1 rounded-full bg-[#7A1C1C]/90 text-amber-50 text-xs font-semibold shadow-md">
+                    <span className="px-3 py-1 rounded-full bg-white/90 text-stone-900 text-xs font-semibold shadow-sm backdrop-blur-sm">
                       {item.category}
                     </span>
                   </div>
 
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="font-festive text-2xl font-bold text-amber-100 group-hover:text-amber-300 transition-colors">
+                  <div className="absolute bottom-4 left-5 right-5">
+                    <h3 className="font-festive text-2xl font-bold text-white group-hover:text-amber-200 transition-colors">
                       {item.name}
                     </h3>
                   </div>
@@ -93,27 +90,27 @@ export default function PopularStreetFoods({ onOpenChaiMenu, onOpenJuiceMenu, on
                 {/* Card Body */}
                 <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                   
-                  <p className="text-amber-100/80 text-sm leading-relaxed">
+                  <p className="text-stone-600 text-sm leading-relaxed">
                     {item.description}
                   </p>
 
                   {/* Origin */}
-                  <div className="flex items-start gap-2 text-xs text-amber-300/80 bg-[#1C0D07]/60 p-3 rounded-2xl border border-amber-500/15">
-                    <MapPin className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                  <div className="flex items-start gap-2 text-xs text-stone-600 bg-stone-50 p-3 rounded-2xl border border-stone-200/60">
+                    <MapPin className="w-4 h-4 text-[#9E3B24] shrink-0 mt-0.5" />
                     <div>
-                      <span className="block font-semibold text-amber-300 uppercase text-[10px]">Street Hub:</span>
+                      <span className="block font-bold text-stone-800 uppercase text-[10px]">Location / Origin:</span>
                       <span>{item.origin}</span>
                     </div>
                   </div>
 
                   {/* Fun Fact Callout */}
-                  <div className="bg-gradient-to-r from-amber-500/10 to-orange-500/10 p-3.5 rounded-2xl border border-amber-400/30 flex items-start gap-2.5">
-                    <Lightbulb className="w-4 h-4 text-amber-300 shrink-0 mt-0.5 animate-bounce" style={{ animationDuration: '3s' }} />
+                  <div className="bg-[#FAF7F2] p-3.5 rounded-2xl border border-stone-200/80 flex items-start gap-2.5">
+                    <Lightbulb className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
                     <div>
-                      <span className="block text-[10px] uppercase font-bold text-amber-300 tracking-wider">
-                        Telugu Fun Fact:
+                      <span className="block text-[10px] uppercase font-bold text-stone-800 tracking-wider">
+                        Culinary Heritage Note:
                       </span>
-                      <p className="text-amber-100/90 text-xs italic">
+                      <p className="text-stone-600 text-xs italic">
                         "{item.funFact}"
                       </p>
                     </div>

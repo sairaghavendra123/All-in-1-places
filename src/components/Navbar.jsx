@@ -71,23 +71,23 @@ export default function Navbar({ activeCategory, setActiveCategory, onOpenShutte
       {/* Main Header Navbar */}
       <nav className={`transition-all duration-300 ${
         scrolled 
-          ? 'bg-[#2B160C]/95 backdrop-blur-md shadow-2xl border-b border-amber-500/20 py-2.5' 
-          : 'bg-[#1C0D07]/90 backdrop-blur-sm py-3'
+          ? 'bg-[#FAF7F2]/95 backdrop-blur-md shadow-md border-b border-stone-200/80 py-2.5' 
+          : 'bg-[#FAF7F2]/90 backdrop-blur-sm py-3'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           
           {/* Logo & Brand */}
           <a href="#hero" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#7A1C1C] via-[#C2510B] to-[#E5A93C] p-0.5 shadow-lg group-hover:scale-105 transition-transform duration-300">
-              <div className="w-full h-full bg-[#1C0D07] rounded-full flex items-center justify-center">
-                <Utensils className="w-5 h-5 text-amber-400 group-hover:rotate-12 transition-transform duration-300" />
+            <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#9E3B24] via-[#C85A32] to-[#D4AF37] p-0.5 shadow-md group-hover:scale-105 transition-transform duration-300">
+              <div className="w-full h-full bg-[#FAF7F2] rounded-full flex items-center justify-center">
+                <Utensils className="w-5 h-5 text-[#9E3B24] group-hover:rotate-12 transition-transform duration-300" />
               </div>
             </div>
             <div>
-              <span className="font-festive text-xl sm:text-2xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-orange-400">
+              <span className="font-festive text-xl sm:text-2xl font-bold tracking-wider text-stone-900">
                 ALL IN ONE PLACES
               </span>
-              <span className="block text-[10px] uppercase tracking-widest text-amber-300/80 font-medium">
+              <span className="block text-[10px] uppercase tracking-widest text-[#9E3B24] font-bold">
                 Telugu Food Heritage Guide
               </span>
             </div>
@@ -97,7 +97,7 @@ export default function Navbar({ activeCategory, setActiveCategory, onOpenShutte
           <div className="flex items-center gap-3">
             <button
               onClick={onOpenShutterModal}
-              className="flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-gradient-to-r from-amber-600 via-amber-500 to-orange-500 text-white text-xs font-bold shadow-lg hover:brightness-110 hover:scale-105 transition-all duration-300 border border-amber-300/40"
+              className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#9E3B24] hover:bg-[#832E1A] text-white text-xs font-bold shadow-md hover:scale-105 transition-all duration-300"
             >
               <Store className="w-3.5 h-3.5" />
               <span>6–7 Shutter Layout</span>
@@ -105,16 +105,16 @@ export default function Navbar({ activeCategory, setActiveCategory, onOpenShutte
 
             <a
               href="#map"
-              className="hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#7A1C1C] to-[#A32828] text-amber-100 text-xs font-semibold shadow-festive hover:shadow-red-900/40 hover:scale-105 transition-all duration-300 border border-amber-400/30"
+              className="hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-[#1B4D3E] hover:bg-[#143B2F] text-white text-xs font-semibold shadow-md hover:scale-105 transition-all duration-300"
             >
-              <Compass className="w-4 h-4 text-amber-300" />
+              <Compass className="w-4 h-4 text-emerald-200" />
               <span>Explore Map</span>
             </a>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="xl:hidden p-2 rounded-lg bg-amber-500/10 text-amber-300 hover:bg-amber-500/20 border border-amber-500/30 transition-colors focus:outline-none"
+              className="xl:hidden p-2 rounded-lg bg-stone-100 text-stone-800 hover:bg-stone-200 border border-stone-200 transition-colors focus:outline-none"
               aria-label="Toggle navigation menu"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -124,13 +124,13 @@ export default function Navbar({ activeCategory, setActiveCategory, onOpenShutte
         </div>
 
         {/* TOP HORIZONTAL SCROLLBAR OPTIONS TRACK */}
-        <div className="w-full mt-2 pt-2 border-t border-amber-500/20 bg-[#170A04]/90 backdrop-blur-md relative">
+        <div className="w-full mt-2 pt-2 border-t border-stone-200/60 bg-[#F3ECE2]/80 backdrop-blur-md relative">
           <div className="max-w-7xl mx-auto px-4 relative flex items-center">
             
             {/* Scroll Left Button */}
             <button
               onClick={scrollLeft}
-              className="hidden sm:flex z-10 p-1.5 rounded-full bg-[#7A1C1C] hover:bg-[#A32828] text-amber-200 border border-amber-500/30 shadow-md transition-colors mr-2 flex-shrink-0"
+              className="hidden sm:flex z-10 p-1.5 rounded-full bg-white hover:bg-stone-100 text-stone-700 border border-stone-200 shadow-sm transition-colors mr-2 flex-shrink-0"
               aria-label="Scroll options left"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -155,13 +155,13 @@ export default function Navbar({ activeCategory, setActiveCategory, onOpenShutte
                     }}
                     className={`flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all duration-300 flex-shrink-0 ${
                       opt.isSpecial
-                        ? 'bg-gradient-to-r from-[#7A1C1C] to-[#D4AF37] text-white font-bold border border-amber-300/50 shadow-md hover:scale-105'
+                        ? 'bg-[#9E3B24] text-white font-bold shadow-sm hover:scale-105'
                         : isActive
-                        ? 'bg-gradient-to-r from-[#7A1C1C] to-[#A32828] text-amber-100 font-bold border border-amber-400/40 shadow-festive'
-                        : 'bg-[#2B160C]/90 text-amber-200/80 hover:text-amber-100 hover:bg-amber-500/20 border border-amber-500/20'
+                        ? 'bg-[#1B4D3E] text-white font-bold shadow-sm'
+                        : 'bg-white/90 text-stone-700 hover:text-stone-900 hover:bg-white border border-stone-200/80'
                     }`}
                   >
-                    <IconComp className={`w-3.5 h-3.5 ${isActive ? 'text-amber-300' : 'text-amber-400/80'}`} />
+                    <IconComp className={`w-3.5 h-3.5 ${isActive ? 'text-amber-200' : 'text-stone-500'}`} />
                     <span>{opt.name}</span>
                   </a>
                 );
@@ -171,7 +171,7 @@ export default function Navbar({ activeCategory, setActiveCategory, onOpenShutte
             {/* Scroll Right Button */}
             <button
               onClick={scrollRight}
-              className="hidden sm:flex z-10 p-1.5 rounded-full bg-[#7A1C1C] hover:bg-[#A32828] text-amber-200 border border-amber-500/30 shadow-md transition-colors ml-2 flex-shrink-0"
+              className="hidden sm:flex z-10 p-1.5 rounded-full bg-white hover:bg-stone-100 text-stone-700 border border-stone-200 shadow-sm transition-colors ml-2 flex-shrink-0"
               aria-label="Scroll options right"
             >
               <ChevronRight className="w-4 h-4" />
@@ -187,7 +187,7 @@ export default function Navbar({ activeCategory, setActiveCategory, onOpenShutte
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="xl:hidden bg-[#2B160C]/98 border-b border-amber-500/20 shadow-2xl overflow-hidden"
+              className="xl:hidden bg-white border-b border-stone-200 shadow-xl overflow-hidden"
             >
               <div className="max-w-7xl mx-auto px-4 py-6 flex flex-col gap-2">
                 {dashboardOptions.map((opt) => (
@@ -198,13 +198,13 @@ export default function Navbar({ activeCategory, setActiveCategory, onOpenShutte
                       if (!opt.href) e.preventDefault();
                       handleOptionClick(opt);
                     }}
-                    className="px-4 py-3 rounded-xl text-base font-medium text-amber-100 hover:text-amber-300 hover:bg-amber-500/15 border border-transparent hover:border-amber-500/30 transition-all flex items-center justify-between"
+                    className="px-4 py-3 rounded-xl text-base font-medium text-stone-800 hover:text-[#9E3B24] hover:bg-stone-50 border border-transparent hover:border-stone-200 transition-all flex items-center justify-between"
                   >
                     <div className="flex items-center gap-2">
-                      <opt.icon className="w-4 h-4 text-amber-400" />
+                      <opt.icon className="w-4 h-4 text-[#9E3B24]" />
                       <span>{opt.name}</span>
                     </div>
-                    <MapPin className="w-4 h-4 text-amber-400/60" />
+                    <MapPin className="w-4 h-4 text-stone-400" />
                   </a>
                 ))}
               </div>

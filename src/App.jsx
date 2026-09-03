@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import SearchBar from './components/SearchBar';
 import FeaturedCities from './components/FeaturedCities';
 import PopularStreetFoods from './components/PopularStreetFoods';
+import ExploreCuisineSection from './components/ExploreCuisineSection';
 import InteractiveMap from './components/InteractiveMap';
 import FoodCategories from './components/FoodCategories';
 import FoodGallery from './components/FoodGallery';
@@ -67,7 +68,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#1C0D07] text-[#FFF8F0] selection:bg-[#7A1C1C] selection:text-white font-sans">
+    <div className="min-h-screen bg-[#FAF7F2] text-stone-900 selection:bg-[#9E3B24] selection:text-white font-sans">
       
       {/* Navigation Bar */}
       <Navbar
@@ -78,7 +79,7 @@ export default function App() {
 
       {/* Main Content Sections */}
       <main>
-        {/* Hero Section */}
+        {/* 1. Hero Section */}
         <Hero onOpenShutterModal={() => setIsShutterModalOpen(true)} />
 
         {/* Search & Filtering Control Panel */}
@@ -92,13 +93,7 @@ export default function App() {
           onResetFilters={handleResetFilters}
         />
 
-        {/* Featured Cities Showcase */}
-        <FeaturedCities
-          cities={filteredCities}
-          onSelectCity={(city) => setSelectedCityModal(city)}
-        />
-
-        {/* Popular Street Foods */}
+        {/* 2. Popular Telugu Dishes */}
         <PopularStreetFoods
           onOpenChaiMenu={() => setIsChaiModalOpen(true)}
           onOpenJuiceMenu={() => setIsJuiceModalOpen(true)}
@@ -110,24 +105,34 @@ export default function App() {
           onOpenShawarmaMenu={() => setIsShawarmaModalOpen(true)}
         />
 
-        {/* Interactive AP & TS Map */}
+        {/* 3. Explore Telugu Cuisine (Andhra Pradesh & Telangana) */}
+        <ExploreCuisineSection
+          onCategorySelect={(regionName) => {
+            setSelectedRegion(regionName);
+            document.getElementById('cities')?.scrollIntoView({ behavior: 'smooth' });
+          }}
+        />
+
+        {/* 4. Explore By City Showcase */}
+        <FeaturedCities
+          cities={filteredCities}
+          onSelectCity={(city) => setSelectedCityModal(city)}
+        />
+
+        {/* 5. Featured Food & Discover Section */}
         <InteractiveMap
           onSelectCity={(city) => setSelectedCityModal(city)}
         />
 
-        {/* Food Categories */}
         <FoodCategories
           activeCategory={activeCategory}
           setActiveCategory={setActiveCategory}
         />
 
-        {/* Food Gallery */}
         <FoodGallery />
 
-        {/* About Section */}
         <AboutSection />
 
-        {/* Contact Section */}
         <ContactSection />
       </main>
 

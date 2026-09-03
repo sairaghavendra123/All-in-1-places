@@ -22,19 +22,19 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-[#1A0D07] relative z-10">
+    <section id="contact" className="py-20 sm:py-28 bg-[#FAF7F2] relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold uppercase tracking-widest mb-3">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#9E3B24]/10 border border-[#9E3B24]/20 text-[#9E3B24] text-xs font-semibold uppercase tracking-widest mb-4">
             <MessageSquare className="w-3.5 h-3.5" />
             <span>Connect & Share Food Feedback</span>
           </div>
-          <h2 className="font-festive text-3xl sm:text-5xl font-bold text-white mb-4">
+          <h2 className="font-festive text-3xl sm:text-5xl font-bold text-stone-900 tracking-tight mb-4">
             Contact & Community
           </h2>
-          <p className="text-amber-100/70 text-sm sm:text-base leading-relaxed">
+          <p className="text-stone-600 text-base sm:text-lg leading-relaxed">
             Have a traditional recipe from your hometown in Andhra Pradesh that should be featured? Drop us a message!
           </p>
         </div>
@@ -42,12 +42,12 @@ export default function ContactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           
           {/* Left Column: Direct Contact Info & Socials */}
-          <div className="lg:col-span-5 bg-[#2B160C]/90 rounded-3xl p-8 border border-amber-500/30 shadow-2xl flex flex-col justify-between space-y-8">
+          <div className="lg:col-span-5 bg-white rounded-3xl p-8 border border-stone-200/90 shadow-xl flex flex-col justify-between space-y-8">
             <div>
-              <h3 className="font-festive text-2xl font-bold text-amber-100 mb-4">
+              <h3 className="font-festive text-2xl font-bold text-stone-900 mb-4">
                 Get in Touch
               </h3>
-              <p className="text-amber-200/70 text-sm leading-relaxed mb-6">
+              <p className="text-stone-600 text-sm leading-relaxed mb-6">
                 We welcome culinary stories, regional food corrections, and authentic photographs from heritage kitchens across Andhra Pradesh.
               </p>
 
@@ -56,7 +56,7 @@ export default function ContactSection() {
                 {/* Email Box */}
                 <a 
                   href="mailto:sairaghavendra937@gmail.com"
-                  className="group flex items-center gap-4 p-5 rounded-2xl bg-[#1C0D07]/90 border border-amber-500/30 hover:border-amber-400/80 transition-all hover:scale-[1.02] shadow-lg relative overflow-hidden block"
+                  className="group flex items-center gap-4 p-5 rounded-2xl bg-stone-50 border border-stone-200 hover:border-[#9E3B24] transition-all hover:scale-[1.02] shadow-sm block"
                 >
                   <div className="absolute -right-6 -bottom-6 w-24 h-24 bg-amber-500/10 rounded-full blur-xl group-hover:bg-amber-500/20 transition-all"></div>
                   <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500/20 to-amber-700/30 text-amber-300 border border-amber-400/30 flex items-center justify-center shrink-0 group-hover:rotate-6 transition-transform">

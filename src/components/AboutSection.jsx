@@ -4,10 +4,10 @@ import { ShieldCheck, Heart, Sparkles, BookOpen, Utensils } from 'lucide-react';
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-20 bg-[#170B06] relative z-10">
+    <section id="about" className="py-20 sm:py-28 bg-[#FAF7F2] relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="telugu-card rounded-3xl p-8 sm:p-12 border border-amber-500/40 relative overflow-hidden shadow-2xl">
+        <div className="bg-white rounded-3xl p-8 sm:p-12 border border-stone-200/90 relative overflow-hidden shadow-xl">
           
           {/* Background Watermark */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
@@ -17,30 +17,30 @@ export default function AboutSection() {
             {/* Left Narrative */}
             <div className="lg:col-span-7 space-y-6">
               
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold uppercase tracking-widest">
-                <Heart className="w-3.5 h-3.5 text-amber-400" />
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#9E3B24]/10 border border-[#9E3B24]/20 text-[#9E3B24] text-xs font-semibold uppercase tracking-widest">
+                <Heart className="w-3.5 h-3.5 text-[#9E3B24]" />
                 <span>Preserving Telugu Culinary History</span>
               </div>
 
-              <h2 className="font-festive text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
+              <h2 className="font-festive text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900 leading-tight">
                 About ALL IN ONE PLACES
               </h2>
 
-              <p className="text-amber-100/90 text-sm sm:text-base leading-relaxed">
+              <p className="text-stone-700 text-base leading-relaxed">
                 <strong>ALL IN ONE PLACES</strong> is created to document, preserve, and celebrate the rich, diverse culinary heritage of <strong>Andhra Pradesh</strong>.
               </p>
 
-              <p className="text-amber-200/80 text-sm leading-relaxed">
-                From paper-thin Pootharekulu in East Godavari to royal Hyderabadi Shahi Haleem, spicy Guntur Mirchi Bajjis, and Rayalaseema Uggani, this platform serves as an interactive cultural food discovery guide for food lovers, tourists, historians, and generations to come.
+              <p className="text-stone-600 text-sm leading-relaxed">
+                From paper-thin Pootharekulu in East Godavari to spicy Guntur Mirchi Bajjis, Vijayawada Punugulu, and Rajahmundry Rose Milk, this platform serves as an interactive cultural food discovery guide for food lovers, tourists, and historians.
               </p>
 
               {/* Informational Project Purpose Banner */}
-              <div className="bg-[#1C0D07] p-5 rounded-2xl border border-amber-500/30 space-y-2">
-                <div className="flex items-center gap-2 text-amber-400 font-bold text-xs uppercase tracking-wider">
+              <div className="bg-stone-50 p-5 rounded-2xl border border-stone-200 space-y-2">
+                <div className="flex items-center gap-2 text-[#9E3B24] font-bold text-xs uppercase tracking-wider">
                   <ShieldCheck className="w-4 h-4" />
-                  <span>Educational & Demonstration Notice</span>
+                  <span>Educational & Discovery Notice</span>
                 </div>
-                <p className="text-amber-200/80 text-xs sm:text-sm leading-relaxed">
+                <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">
                   This website is <strong>NOT an online food ordering or e-commerce platform</strong>. Visitors can explore famous foods city-wise, learn recipes, view authentic photography, and understand Telugu food culture. There is <strong>NO shopping cart, NO checkout, NO payment gateway, and NO food delivery system</strong>.
                 </p>
               </div>
