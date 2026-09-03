@@ -56,7 +56,7 @@ export default function ContactSection() {
                 {/* Email Box */}
                 <a 
                   href="mailto:sairaghavendra937@gmail.com"
-                  className="group flex items-center gap-4 p-4 rounded-2xl bg-[#1C0D07]/90 border border-amber-500/30 hover:border-amber-400/80 transition-all hover:scale-[1.02] shadow-lg relative overflow-hidden block"
+                  className="group flex items-center gap-4 p-5 rounded-2xl bg-[#1C0D07]/90 border border-amber-500/30 hover:border-amber-400/80 transition-all hover:scale-[1.02] shadow-lg relative overflow-hidden block"
                 >
                   <div className="absolute -right-6 -bottom-6 w-24 h-24 bg-amber-500/10 rounded-full blur-xl group-hover:bg-amber-500/20 transition-all"></div>
                   <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500/20 to-amber-700/30 text-amber-300 border border-amber-400/30 flex items-center justify-center shrink-0 group-hover:rotate-6 transition-transform">
@@ -69,46 +69,6 @@ export default function ContactSection() {
                     </span>
                   </div>
                 </a>
-
-                {/* WhatsApp Box */}
-                <div className="group relative p-5 rounded-2xl bg-gradient-to-br from-[#1C0D07] to-[#0D1F16] border border-emerald-500/40 hover:border-emerald-400 shadow-xl transition-all hover:scale-[1.02]">
-                  <div className="absolute -right-6 -top-6 w-28 h-28 bg-emerald-500/15 rounded-full blur-2xl group-hover:bg-emerald-500/25 transition-all"></div>
-                  
-                  <div className="flex items-center justify-between gap-3 mb-3">
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-500/30 to-teal-700/40 text-emerald-400 border border-emerald-400/40 flex items-center justify-center shrink-0 group-hover:rotate-6 transition-transform">
-                        <Phone className="w-6 h-6" />
-                      </div>
-                      <div>
-                        <div className="flex items-center gap-2">
-                          <span className="relative flex h-2.5 w-2.5">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-                          </span>
-                          <span className="text-[10px] uppercase tracking-widest text-emerald-400 font-extrabold">Instant WhatsApp • Online</span>
-                        </div>
-                        <a 
-                          href="https://wa.me/918309179296" 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="text-white text-base sm:text-lg hover:text-emerald-300 font-bold transition-colors block tracking-wide"
-                        >
-                          Direct WhatsApp Support
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-
-                  <a
-                    href="https://wa.me/918309179296"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-600 text-white font-bold text-xs sm:text-sm shadow-lg shadow-emerald-950/60 hover:shadow-emerald-500/40 hover:scale-[1.02] transition-all flex items-center justify-center gap-2 border border-emerald-300/30 group/btn"
-                  >
-                    <MessageSquare className="w-4 h-4 text-emerald-200 group-hover/btn:rotate-12 transition-transform" />
-                    <span>Click to Start WhatsApp Chat Now</span>
-                  </a>
-                </div>
 
               </div>
             </div>
