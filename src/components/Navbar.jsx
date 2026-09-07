@@ -72,14 +72,6 @@ export default function Navbar({ activeCategory, setActiveCategory, onOpenShutte
               Explore Food
             </a>
 
-            <button
-              onClick={onOpenShutterModal}
-              className="hidden lg:flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-stone-200 text-xs font-semibold border border-white/15 transition-all"
-            >
-              <Store className="w-3.5 h-3.5 text-amber-300" />
-              <span>6–7 Shutter</span>
-            </button>
-
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
