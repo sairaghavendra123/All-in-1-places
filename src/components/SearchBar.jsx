@@ -15,6 +15,13 @@ export default function SearchBar({
     <div className="relative z-20 max-w-5xl mx-auto px-4 -mt-12 mb-16">
       <div className="bg-[#FAF7F2] text-stone-900 border border-stone-200/80 rounded-3xl p-6 sm:p-7 shadow-xl shadow-black/40">
         
+        {/* Section Heading */}
+        <div className="mb-4 text-left">
+          <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#9E3B24]">
+            DISCOVER TELUGU FOOD
+          </span>
+        </div>
+
         {/* Top Row: Primary Search Input & Secondary Region Selector */}
         <div className="flex flex-col lg:flex-row items-center gap-3.5 mb-5">
           

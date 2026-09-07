@@ -18,16 +18,15 @@ export default function FoodGallery() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold uppercase tracking-widest mb-3">
-            <Camera className="w-3.5 h-3.5" />
-            <span>Authentic Food Photography</span>
-          </div>
-          <h2 className="font-festive text-3xl sm:text-5xl font-bold text-white mb-4">
-            Andhra Food Gallery
+        <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
+          <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#9E3B24]">
+            PHOTOGRAPHY
+          </span>
+          <h2 className="font-festive text-3xl sm:text-4xl font-bold text-white tracking-tight uppercase">
+            Telugu Culinary Gallery
           </h2>
-          <p className="text-amber-100/70 text-sm sm:text-base leading-relaxed">
-            Feast your eyes on high-definition authentic photographs of traditional dishes from every corner of Andhra Pradesh.
+          <p className="text-stone-400 text-sm sm:text-base leading-relaxed">
+            Feast your eyes on authentic photography of traditional dishes from every corner of Andhra Pradesh and Telangana.
           </p>
         </div>
 
@@ -39,8 +38,8 @@ export default function FoodGallery() {
               onClick={() => setGalleryFilter(tab)}
               className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
                 galleryFilter === tab
-                  ? 'bg-gradient-to-r from-[#7A1C1C] to-[#D4AF37] text-amber-100 shadow-festive border border-amber-400/40'
-                  : 'bg-[#2B160C] text-amber-200/60 hover:text-amber-200 hover:bg-amber-500/10 border border-amber-500/20'
+                  ? 'bg-[#9E3B24] text-white shadow-md'
+                  : 'bg-white/5 text-stone-300 hover:bg-white/10 border border-white/10'
               }`}
             >
               {tab}

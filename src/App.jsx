@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import SearchBar from './components/SearchBar';
 import FeaturedCities from './components/FeaturedCities';
 import PopularStreetFoods from './components/PopularStreetFoods';
+import ExploreCuisineSection from './components/ExploreCuisineSection';
 import InteractiveMap from './components/InteractiveMap';
 import FoodCategories from './components/FoodCategories';
 import FoodGallery from './components/FoodGallery';
@@ -67,7 +68,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#1C0D07] text-[#FFF8F0] selection:bg-[#7A1C1C] selection:text-white font-sans">
+    <div className="min-h-screen bg-[#140A07] text-[#FFF8F0] selection:bg-[#9E3B24] selection:text-white font-sans">
       
       {/* Navigation Bar */}
       <Navbar
@@ -81,13 +82,18 @@ export default function App() {
         {/* Hero Section */}
         <Hero onOpenShutterModal={() => setIsShutterModalOpen(true)} />
 
-        {/* Featured Cities Showcase */}
-        <FeaturedCities
-          cities={filteredCities}
-          onSelectCity={(city) => setSelectedCityModal(city)}
+        {/* Discovery Search & Filtering Section */}
+        <SearchBar
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          activeCategory={activeCategory}
+          setActiveCategory={setActiveCategory}
+          selectedRegion={selectedRegion}
+          setSelectedRegion={setSelectedRegion}
+          onResetFilters={handleResetFilters}
         />
 
-        {/* Popular Street Foods */}
+        {/* Popular Telugu Dishes */}
         <PopularStreetFoods
           onOpenChaiMenu={() => setIsChaiModalOpen(true)}
           onOpenJuiceMenu={() => setIsJuiceModalOpen(true)}
@@ -97,6 +103,15 @@ export default function App() {
           onOpenPaniPuriMenu={() => setIsPaniPuriModalOpen(true)}
           onOpenBajjiMixtureMenu={() => setIsBajjiMixtureModalOpen(true)}
           onOpenShawarmaMenu={() => setIsShawarmaModalOpen(true)}
+        />
+
+        {/* Explore By Region */}
+        <ExploreCuisineSection />
+
+        {/* Explore Telugu Cities */}
+        <FeaturedCities
+          cities={filteredCities}
+          onSelectCity={(city) => setSelectedCityModal(city)}
         />
 
         {/* Interactive AP & TS Map */}

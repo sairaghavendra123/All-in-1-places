@@ -8,16 +8,15 @@ export default function FeaturedCities({ cities, onSelectCity }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold uppercase tracking-widest mb-3">
-            <MapPin className="w-3.5 h-3.5" />
-            <span>Regional Food Heritage</span>
-          </div>
-          <h2 className="font-festive text-3xl sm:text-5xl font-bold text-white mb-4">
-            Famous Foods City-Wise
+        <div className="text-center max-w-2xl mx-auto mb-14 space-y-2">
+          <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#9E3B24]">
+            CITY HERITAGE
+          </span>
+          <h2 className="font-festive text-3xl sm:text-4xl font-bold text-white tracking-tight uppercase">
+            Explore Telugu Cities
           </h2>
-          <p className="text-amber-100/70 text-sm sm:text-base leading-relaxed font-sans">
-            Every city in Andhra Pradesh boasts a unique culinary signature passed down through centuries. Click any card to explore recipes, history, and ingredients.
+          <p className="text-stone-400 text-sm sm:text-base leading-relaxed font-sans">
+            Every city in Andhra Pradesh and Telangana boasts a unique culinary signature passed down through generations.
           </p>
         </div>
 
