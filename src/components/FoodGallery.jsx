@@ -1,37 +1,42 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Camera, Maximize2, X, MapPin, Sparkles } from 'lucide-react';
+import { Maximize2, X, MapPin, Sparkles } from 'lucide-react';
 import { FOOD_GALLERY } from '../data/foodData';
 
 export default function FoodGallery() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [galleryFilter, setGalleryFilter] = useState('All');
 
-  const filterTabs = ['All', 'Andhra Specials', 'Traditional Sweet', 'Street Foods', 'Beverages'];
+  const filterTabs = ['All', 'Traditional Sweet', 'Street Foods', 'Beverages'];
 
   const filteredGallery = galleryFilter === 'All'
     ? FOOD_GALLERY
-    : FOOD_GALLERY.filter((item) => item.category === galleryFilter);
+    : FOOD_GALLERY.filter((item) => {
+        if (galleryFilter === 'Traditional Sweet') return item.category === 'Traditional Sweet';
+        if (galleryFilter === 'Street Foods') return item.category === 'Street Foods';
+        if (galleryFilter === 'Beverages') return item.category === 'Beverages';
+        return true;
+      });
 
   return (
-    <section id="gallery" className="py-20 bg-[#1A0D07] relative z-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="gallery" className="py-24 sm:py-32 bg-[#140A07] relative overflow-hidden border-t border-white/5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12 sm:space-y-16">
         
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
-          <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#9E3B24]">
-            PHOTOGRAPHY
+        {/* 1. Section Introduction */}
+        <div className="text-center max-w-2xl mx-auto space-y-3">
+          <span className="text-xs font-bold uppercase tracking-[0.2em] text-amber-300 font-mono">
+            THE TASTE OF TELUGU
           </span>
-          <h2 className="font-festive text-3xl sm:text-4xl font-bold text-white tracking-tight uppercase">
-            Telugu Culinary Gallery
+          <h2 className="font-festive text-3xl sm:text-5xl font-bold text-white tracking-tight uppercase">
+            A Feast for the Eyes
           </h2>
-          <p className="text-stone-400 text-sm sm:text-base leading-relaxed">
-            Feast your eyes on authentic photography of traditional dishes from every corner of Andhra Pradesh and Telangana.
+          <p className="text-stone-300 text-sm sm:text-base leading-relaxed font-sans">
+            From fiery regional favourites to timeless traditional dishes, explore the flavours that define Telugu cuisine.
           </p>
         </div>
 
-        {/* Gallery Filter Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
+        {/* 2. Filter Category Selector Bar */}
+        <div className="flex flex-wrap justify-center gap-2">
           {filterTabs.map((tab) => (
             <button
               key={tab}
@@ -47,54 +52,78 @@ export default function FoodGallery() {
           ))}
         </div>
 
-        {/* Masonry / Grid Gallery */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {filteredGallery.map((item, index) => (
-            <motion.div
-              key={item.id}
-              layout
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
-              onClick={() => setSelectedImage(item)}
-              className="relative group rounded-3xl overflow-hidden cursor-pointer border border-amber-500/30 shadow-xl bg-[#2B160C] h-72"
-            >
-              <img
-                src={item.image}
-                alt={item.title}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 filter brightness-90 group-hover:brightness-100"
-              />
-              
-              {/* Overlay on hover */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1C0D07] via-[#1C0D07]/40 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-300 flex flex-col justify-end p-6">
-                
-                <div className="flex items-center justify-between mb-1">
-                  <span className="text-[11px] font-semibold text-amber-400 flex items-center gap-1">
-                    <MapPin className="w-3 h-3 text-amber-300" />
-                    {item.city}
-                  </span>
-                  <span className="p-1.5 rounded-full bg-amber-500/20 text-amber-300 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Maximize2 className="w-3.5 h-3.5" />
-                  </span>
+        {/* 3. Asymmetric Magazine Editorial Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 items-start">
+          {filteredGallery.map((item, index) => {
+            const isFeatured = index === 0 && galleryFilter === 'All';
+
+            return (
+              <motion.div
+                key={item.id}
+                layout
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                onClick={() => setSelectedImage(item)}
+                className={`group rounded-3xl overflow-hidden cursor-pointer border border-white/10 shadow-2xl bg-[#1C0D07] relative flex flex-col justify-end transition-all duration-300 hover:-translate-y-1.5 ${
+                  isFeatured
+                    ? 'md:col-span-2 md:row-span-2 h-[420px] sm:h-[500px]'
+                    : 'h-[260px] sm:h-[280px]'
+                }`}
+              >
+                {/* Full Cover Image */}
+                <div className="absolute inset-0 z-0 overflow-hidden bg-stone-900">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out filter brightness-90 group-hover:brightness-95"
+                  />
+                  {/* Bottom Dark Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#140A07] via-[#140A07]/40 to-transparent opacity-90 group-hover:opacity-95 transition-opacity" />
                 </div>
 
-                <h3 className="font-festive text-lg font-bold text-amber-100 group-hover:text-amber-300 transition-colors">
-                  {item.title}
-                </h3>
-                
-                <p className="text-amber-200/70 text-xs line-clamp-2 mt-1">
-                  {item.caption}
-                </p>
+                {/* Top Badges for Featured Card */}
+                {isFeatured && (
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className="px-3 py-1 rounded-full bg-[#9E3B24] text-white text-xs font-bold uppercase tracking-wider shadow-md">
+                      Featured Photography
+                    </span>
+                  </div>
+                )}
 
-              </div>
-            </motion.div>
-          ))}
+                {/* Minimal Content Overlay */}
+                <div className="relative z-10 p-6 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-amber-300 flex items-center gap-1">
+                      <MapPin className="w-3 h-3 text-[#9E3B24]" />
+                      {item.city}
+                    </span>
+                    <span className="p-1.5 rounded-full bg-white/10 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                      <Maximize2 className="w-3.5 h-3.5" />
+                    </span>
+                  </div>
+
+                  <h3 className={`font-festive font-bold text-white group-hover:text-amber-200 transition-colors uppercase leading-tight ${
+                    isFeatured ? 'text-2xl sm:text-3xl' : 'text-lg sm:text-xl'
+                  }`}>
+                    {item.title}
+                  </h3>
+
+                  {isFeatured && (
+                    <p className="text-stone-300 text-xs sm:text-sm line-clamp-2 pt-1 font-sans">
+                      {item.caption}
+                    </p>
+                  )}
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
       </div>
 
-      {/* Lightbox Fullscreen Modal */}
+      {/* 4. Lightbox Fullscreen Modal */}
       <AnimatePresence>
         {selectedImage && (
           <motion.div
@@ -102,40 +131,46 @@ export default function FoodGallery() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedImage(null)}
-            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
           >
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
+              initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
+              exit={{ scale: 0.95, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative max-w-4xl w-full bg-[#2B160C] rounded-3xl overflow-hidden border border-amber-500/40 shadow-2xl"
+              className="relative max-w-4xl w-full bg-[#1C0D07] rounded-3xl overflow-hidden border border-white/10 shadow-2xl"
             >
               <button
                 onClick={() => setSelectedImage(null)}
-                className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/70 text-amber-200 hover:text-white flex items-center justify-center border border-amber-500/40"
+                className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/70 text-white hover:bg-[#9E3B24] flex items-center justify-center border border-white/10 transition-colors"
               >
-                <X className="w-6 h-6" />
+                <X className="w-5 h-5" />
               </button>
 
-              <div className="relative h-96 sm:h-[450px]">
+              <div className="relative h-80 sm:h-[480px] bg-stone-900">
                 <img
                   src={selectedImage.image}
                   alt={selectedImage.title}
                   className="w-full h-full object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1C0D07] via-transparent to-transparent opacity-60" />
               </div>
 
-              <div className="p-6 bg-[#1C0D07]">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="px-3 py-1 rounded-full bg-[#7A1C1C] text-amber-200 text-xs font-bold">
-                    {selectedImage.city} • {selectedImage.category}
+              <div className="p-6 sm:p-8 space-y-3 bg-[#1C0D07]">
+                <div className="flex items-center justify-between">
+                  <span className="px-3 py-1 rounded-full bg-[#9E3B24] text-white text-xs font-bold uppercase tracking-wider">
+                    {selectedImage.city}
+                  </span>
+                  <span className="text-xs font-mono font-bold uppercase tracking-widest text-amber-300">
+                    {selectedImage.category}
                   </span>
                 </div>
-                <h3 className="font-festive text-2xl font-bold text-amber-100 mb-2">
+
+                <h3 className="font-festive text-2xl sm:text-3xl font-bold text-white uppercase">
                   {selectedImage.title}
                 </h3>
-                <p className="text-amber-200/80 text-sm">
+
+                <p className="text-stone-300 text-sm leading-relaxed font-sans">
                   {selectedImage.caption}
                 </p>
               </div>
