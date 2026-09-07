@@ -1,128 +1,164 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Clock, Flame, Sparkles, BookOpen, ChevronRight, Layers } from 'lucide-react';
+import { MapPin, ChevronLeft, ChevronRight, ArrowRight, Sparkles } from 'lucide-react';
 
 export default function FeaturedCities({ cities, onSelectCity }) {
+  const [activeSlide, setActiveSlide] = useState(1);
+  const scrollContainerRef = useRef(null);
+
+  const handleScroll = () => {
+    if (!scrollContainerRef.current) return;
+    const { scrollLeft } = scrollContainerRef.current;
+    const cardWidth = 340; // Approx card width + gap
+    const index = Math.round(scrollLeft / cardWidth) + 1;
+    const clamped = Math.min(Math.max(index, 1), cities.length || 1);
+    setActiveSlide(clamped);
+  };
+
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: -360, behavior: 'smooth' });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: 360, behavior: 'smooth' });
+    }
+  };
+
   return (
-    <section id="cities" className="py-16 relative z-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="cities" className="py-24 sm:py-32 bg-[#140A07] relative overflow-hidden border-t border-white/5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12 sm:space-y-16">
         
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14 space-y-2">
-          <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#9E3B24]">
-            CITY HERITAGE
-          </span>
-          <h2 className="font-festive text-3xl sm:text-4xl font-bold text-white tracking-tight uppercase">
-            Explore Telugu Cities
-          </h2>
-          <p className="text-stone-400 text-sm sm:text-base leading-relaxed font-sans">
-            Every city in Andhra Pradesh and Telangana boasts a unique culinary signature passed down through generations.
-          </p>
+        {/* Section Header & Carousel Controls */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="space-y-3 max-w-xl">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-amber-300 font-mono">
+              EXPLORE TELUGU CITIES
+            </span>
+            <h2 className="font-festive text-3xl sm:text-5xl font-bold text-white tracking-tight uppercase">
+              Every City Has a Flavour
+            </h2>
+            <p className="text-stone-300 text-sm sm:text-base leading-relaxed font-sans">
+              Discover the iconic foods and culinary traditions that make Telugu cities unique.
+            </p>
+          </div>
+
+          {/* Carousel Arrow Controls & Progress Counter */}
+          {cities.length > 0 && (
+            <div className="flex items-center gap-4 self-start md:self-auto">
+              <span className="text-xs font-mono font-bold tracking-widest text-amber-300">
+                {String(activeSlide).padStart(2, '0')} / {String(cities.length).padStart(2, '0')}
+              </span>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={scrollLeft}
+                  aria-label="Previous slide"
+                  className="p-3 rounded-full bg-white/5 hover:bg-[#9E3B24] border border-white/10 text-white transition-all hover:scale-105 active:scale-95 shadow-md"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                <button
+                  onClick={scrollRight}
+                  aria-label="Next slide"
+                  className="p-3 rounded-full bg-white/5 hover:bg-[#9E3B24] border border-white/10 text-white transition-all hover:scale-105 active:scale-95 shadow-md"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+          )}
         </div>
 
-        {/* Cities Grid */}
+        {/* Carousel Content Track */}
         {cities.length === 0 ? (
-          <div className="text-center py-16 bg-[#2B160C]/60 rounded-3xl border border-amber-500/20 max-w-md mx-auto">
+          <div className="text-center py-16 bg-[#1C0D07] rounded-3xl border border-white/10 max-w-md mx-auto">
             <Sparkles className="w-12 h-12 text-amber-400 mx-auto mb-3 opacity-60" />
-            <h3 className="text-xl font-bold text-amber-200 mb-1">No Dishes Found</h3>
-            <p className="text-amber-100/60 text-sm">Try clearing your search query or selecting a different category filter.</p>
+            <h3 className="text-xl font-bold text-white mb-1">No Cities Found</h3>
+            <p className="text-stone-400 text-sm">Try clearing your search query or selecting a different filter.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            ref={scrollContainerRef}
+            onScroll={handleScroll}
+            className="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory py-4 -mx-4 px-4 sm:mx-0 sm:px-0"
+          >
             {cities.map((city, index) => (
               <motion.div
                 key={city.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-50px' }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="telugu-card rounded-3xl overflow-hidden flex flex-col group relative"
+                onClick={() => onSelectCity(city)}
+                className="bg-[#1C0D07] rounded-3xl overflow-hidden border border-white/10 shadow-2xl group flex flex-col justify-end min-h-[440px] sm:min-h-[480px] w-[82vw] sm:w-[340px] md:w-[360px] flex-shrink-0 relative cursor-pointer hover:-translate-y-1.5 transition-all duration-300 snap-start"
               >
-                {/* City Image Header */}
-                <div className="relative h-64 overflow-hidden">
+                {/* Full Cover Image */}
+                <div className="absolute inset-0 z-0 overflow-hidden bg-stone-900">
                   <img
                     src={city.image}
                     alt={`${city.famousFood} from ${city.city}`}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 filter brightness-90"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out filter brightness-85 group-hover:brightness-95"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#2B160C] via-[#2B160C]/30 to-transparent"></div>
-                  
-                  {/* Top Badges */}
-                  <div className="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">
-                    <span className="px-3 py-1 rounded-full bg-[#1C0D07]/80 backdrop-blur-md border border-amber-400/30 text-amber-200 text-xs font-semibold flex items-center gap-1.5 shadow-md">
-                      <MapPin className="w-3 h-3 text-amber-400" />
-                      {city.city} ({city.state === 'Andhra Pradesh' ? 'AP' : 'TS'})
-                    </span>
+                  {/* Bottom Dark Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#140A07] via-[#140A07]/60 to-transparent opacity-95" />
+                </div>
 
-                    <span className="px-3 py-1 rounded-full bg-[#7A1C1C]/90 backdrop-blur-md border border-amber-400/40 text-amber-100 text-xs font-semibold shadow-md">
-                      {city.category}
-                    </span>
-                  </div>
+                {/* Top Badges */}
+                <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10 pointer-events-none">
+                  <span className="px-3 py-1 rounded-full bg-[#140A07]/80 backdrop-blur-md border border-white/10 text-amber-200 text-xs font-semibold flex items-center gap-1.5 shadow-md">
+                    <MapPin className="w-3.5 h-3.5 text-[#9E3B24]" />
+                    <span>{city.city} ({city.state === 'Andhra Pradesh' ? 'AP' : 'TS'})</span>
+                  </span>
 
-                  {/* Food Name Overlay */}
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="font-festive text-2xl font-bold text-amber-100 group-hover:text-amber-300 transition-colors drop-shadow-md">
+                  <span className="px-3 py-1 rounded-full bg-[#9E3B24]/90 backdrop-blur-md text-white text-xs font-bold tracking-wider shadow-md">
+                    {city.category}
+                  </span>
+                </div>
+
+                {/* Card Content Overlay */}
+                <div className="relative z-10 p-6 sm:p-8 space-y-3.5">
+                  <div>
+                    <span className="text-[11px] font-bold uppercase tracking-widest text-amber-300/90 font-mono block mb-1">
+                      {city.state}
+                    </span>
+                    <h3 className="font-festive text-2xl sm:text-3xl font-bold text-white group-hover:text-amber-200 transition-colors uppercase leading-tight">
                       {city.famousFood}
                     </h3>
                   </div>
-                </div>
 
-                {/* Card Content Body */}
-                <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-                  
-                  {/* Description */}
-                  <p className="text-amber-100/80 text-sm leading-relaxed line-clamp-2">
+                  <p className="text-stone-300 text-xs sm:text-sm leading-relaxed line-clamp-2">
                     {city.description}
                   </p>
 
-                  {/* Why Famous Quote */}
-                  <div className="bg-[#1C0D07]/60 p-3 rounded-2xl border border-amber-500/20">
-                    <span className="block text-[11px] uppercase tracking-wider text-amber-400/80 font-semibold mb-0.5">
-                      Why It Is Famous:
-                    </span>
-                    <p className="text-amber-200/90 text-xs italic line-clamp-2">
-                      "{city.whyFamous}"
-                    </p>
-                  </div>
-
-                  {/* Ingredients Preview Tags */}
-                  <div>
-                    <span className="block text-[11px] uppercase tracking-wider text-amber-300/60 font-semibold mb-2">
-                      Key Ingredients:
-                    </span>
-                    <div className="flex flex-wrap gap-1.5">
-                      {city.ingredients.slice(0, 4).map((ing, i) => (
-                        <span
-                          key={i}
-                          className="px-2.5 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-200 text-[11px]"
-                        >
-                          {ing}
-                        </span>
-                      ))}
-                      {city.ingredients.length > 4 && (
-                        <span className="px-2 py-0.5 rounded-full bg-amber-500/5 text-amber-300/60 text-[10px]">
-                          +{city.ingredients.length - 4} more
-                        </span>
-                      )}
+                  {city.whyFamous && (
+                    <div className="bg-[#140A07]/80 backdrop-blur-md p-3 rounded-xl border border-white/10">
+                      <span className="block text-[10px] uppercase tracking-wider text-amber-300/80 font-bold mb-0.5 font-mono">
+                        Why Famous
+                      </span>
+                      <p className="text-stone-300 text-xs italic line-clamp-2">
+                        "{city.whyFamous}"
+                      </p>
                     </div>
-                  </div>
+                  )}
 
-                  {/* Best Time & Details Action Button */}
-                  <div className="pt-3 border-t border-amber-500/20 flex items-center justify-between">
-                    <div className="flex items-center gap-1.5 text-xs text-amber-300/70">
-                      <Clock className="w-3.5 h-3.5 text-amber-400" />
-                      <span className="truncate max-w-[150px]">{city.bestTimeToEat}</span>
-                    </div>
+                  <div className="pt-2 flex items-center justify-between border-t border-white/10">
+                    <span className="text-xs text-stone-400 font-medium truncate max-w-[140px]">
+                      {city.bestTimeToEat}
+                    </span>
 
                     <button
-                      onClick={() => onSelectCity(city)}
-                      className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#7A1C1C] to-[#A32828] hover:from-[#A32828] hover:to-[#D4AF37] text-amber-100 text-xs font-semibold shadow-md flex items-center gap-1.5 transition-all group-hover:translate-x-1"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onSelectCity(city);
+                      }}
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#9E3B24] group-hover:bg-[#832E1A] text-white text-xs font-bold uppercase tracking-wider shadow-md transition-all"
                     >
-                      <span>Explore Dish</span>
-                      <ChevronRight className="w-3.5 h-3.5" />
+                      <span>Explore</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                     </button>
                   </div>
-
                 </div>
               </motion.div>
             ))}
