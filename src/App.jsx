@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import SearchBar from './components/SearchBar';
 import FeaturedCities from './components/FeaturedCities';
+import ShutterSection from './components/ShutterSection';
 import PopularStreetFoods from './components/PopularStreetFoods';
 import ExploreCuisineSection from './components/ExploreCuisineSection';
 import InteractiveMap from './components/InteractiveMap';
@@ -112,6 +113,11 @@ export default function App() {
         <FeaturedCities
           cities={filteredCities}
           onSelectCity={(city) => setSelectedCityModal(city)}
+        />
+
+        {/* 6–7 Shutter Visual Storytelling Experience */}
+        <ShutterSection
+          onOpenShutterModal={() => setIsShutterModalOpen(true)}
         />
 
         {/* Interactive AP & TS Map */}
