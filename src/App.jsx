@@ -81,17 +81,6 @@ export default function App() {
         {/* Hero Section */}
         <Hero onOpenShutterModal={() => setIsShutterModalOpen(true)} />
 
-        {/* Search & Filtering Control Panel */}
-        <SearchBar
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-          activeCategory={activeCategory}
-          setActiveCategory={setActiveCategory}
-          selectedRegion={selectedRegion}
-          setSelectedRegion={setSelectedRegion}
-          onResetFilters={handleResetFilters}
-        />
-
         {/* Featured Cities Showcase */}
         <FeaturedCities
           cities={filteredCities}
