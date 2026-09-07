@@ -1,32 +1,28 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Utensils, Sparkles, MapPin, Lightbulb, Compass } from 'lucide-react';
+import { MapPin, ArrowRight, Utensils } from 'lucide-react';
 import { POPULAR_STREET_FOODS } from '../data/foodData';
 
 export default function PopularStreetFoods({ onOpenChaiMenu, onOpenJuiceMenu, onOpenDrySnacksMenu, onOpenChickenPakodaMenu, onOpenIceCreamMenu, onOpenPaniPuriMenu, onOpenBajjiMixtureMenu, onOpenShawarmaMenu }) {
   return (
-    <section id="street-foods" className="py-20 bg-[#170B06] relative overflow-hidden">
+    <section id="street-foods" className="py-24 bg-[#140A07] relative overflow-hidden">
       
-      {/* Subtle Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-600/5 rounded-full blur-3xl pointer-events-none"></div>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold uppercase tracking-widest mb-3">
-            <Utensils className="w-3.5 h-3.5" />
-            <span>Telugu Night Market Culture</span>
-          </div>
-          <h2 className="font-festive text-3xl sm:text-5xl font-bold text-white mb-4">
-            Popular Street Foods
+        <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#9E3B24]">
+            Culinary Selection
+          </span>
+          <h2 className="font-festive text-3xl sm:text-5xl font-bold text-white tracking-tight">
+            Popular Telugu Dishes
           </h2>
-          <p className="text-amber-100/70 text-sm sm:text-base leading-relaxed">
-            From sizzling highway food stalls to bustling evening street corners, experience the beloved street flavors that fuel daily life in Andhra Pradesh.
+          <p className="text-stone-400 text-sm sm:text-base leading-relaxed">
+            Discover authentic delicacies and street food culture from across Andhra Pradesh and Telangana.
           </p>
         </div>
 
-        {/* Street Foods Grid */}
+        {/* Popular Dishes Image-First Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {POPULAR_STREET_FOODS.map((item, index) => {
             const isChaiItem = item.id === 'irani-chai-osmania';
@@ -53,70 +49,62 @@ export default function PopularStreetFoods({ onOpenChaiMenu, onOpenJuiceMenu, on
             return (
               <motion.div
                 key={item.id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.08 }}
                 onClick={isInteractive ? handleCardClick : undefined}
-                className={`telugu-card rounded-3xl overflow-hidden flex flex-col group relative ${
-                  isInteractive ? 'cursor-pointer hover:border-amber-400 ring-2 ring-amber-500/30' : ''
+                className={`bg-[#1C0D07] rounded-2xl overflow-hidden border border-white/10 shadow-lg hover:border-[#9E3B24]/50 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group ${
+                  isInteractive ? 'cursor-pointer' : ''
                 }`}
               >
-                {/* Image Container */}
-                <div className="relative h-60 overflow-hidden">
+                {/* LARGE FOOD IMAGE */}
+                <div className="relative h-60 w-full overflow-hidden bg-stone-900">
                   <img
                     src={item.image}
                     alt={item.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 filter brightness-90"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#2B160C] via-[#2B160C]/20 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1C0D07] via-transparent to-transparent opacity-80" />
                   
-                  {/* Category Pill */}
-                  <div className="absolute top-4 right-4 flex items-center gap-2">
-                    {isInteractive && (
-                      <span className="px-3 py-1 rounded-full bg-[#C08A34] text-[#2A1810] text-xs font-bold shadow-lg animate-bounce">
-                        📖 Menu Card Inside
-                      </span>
-                    )}
-                    <span className="px-3 py-1 rounded-full bg-[#7A1C1C]/90 text-amber-50 text-xs font-semibold shadow-md">
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 rounded-md bg-[#140A07]/80 backdrop-blur-md text-amber-200/90 text-xs font-medium border border-white/10">
                       {item.category}
                     </span>
                   </div>
-
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="font-festive text-2xl font-bold text-amber-100 group-hover:text-amber-300 transition-colors">
-                      {item.name}
-                    </h3>
-                  </div>
                 </div>
 
-                {/* Card Body */}
+                {/* Card Content Body */}
                 <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-                  
-                  <p className="text-amber-100/80 text-sm leading-relaxed">
-                    {item.description}
-                  </p>
-
-                  {/* Origin */}
-                  <div className="flex items-start gap-2 text-xs text-amber-300/80 bg-[#1C0D07]/60 p-3 rounded-2xl border border-amber-500/15">
-                    <MapPin className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                    <div>
-                      <span className="block font-semibold text-amber-300 uppercase text-[10px]">Street Hub:</span>
-                      <span>{item.origin}</span>
+                  <div>
+                    {/* Location Badge */}
+                    <div className="flex items-center gap-1.5 text-xs text-stone-400 mb-2">
+                      <MapPin className="w-3.5 h-3.5 text-[#9E3B24]" />
+                      <span className="truncate">{item.origin}</span>
                     </div>
+
+                    {/* Dish Title */}
+                    <h3 className="font-festive text-xl font-bold text-white group-hover:text-amber-200 transition-colors mb-2">
+                      {item.name}
+                    </h3>
+
+                    {/* Short Description */}
+                    <p className="text-stone-300 text-xs sm:text-sm leading-relaxed line-clamp-2">
+                      {item.description}
+                    </p>
                   </div>
 
-                  {/* Fun Fact Callout */}
-                  <div className="bg-gradient-to-r from-amber-500/10 to-orange-500/10 p-3.5 rounded-2xl border border-amber-400/30 flex items-start gap-2.5">
-                    <Lightbulb className="w-4 h-4 text-amber-300 shrink-0 mt-0.5 animate-bounce" style={{ animationDuration: '3s' }} />
-                    <div>
-                      <span className="block text-[10px] uppercase font-bold text-amber-300 tracking-wider">
-                        Telugu Fun Fact:
+                  {/* Explore Dish Action */}
+                  <div className="pt-3 border-t border-white/5 flex items-center justify-between">
+                    <span className="text-xs font-semibold text-[#9E3B24] group-hover:text-amber-300 flex items-center gap-1 transition-colors">
+                      <span>Explore Dish</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                    {isInteractive && (
+                      <span className="text-[10px] text-stone-400 font-mono bg-white/5 px-2 py-0.5 rounded">
+                        Menu Card Inside
                       </span>
-                      <p className="text-amber-100/90 text-xs italic">
-                        "{item.funFact}"
-                      </p>
-                    </div>
+                    )}
                   </div>
 
                 </div>
